@@ -20,10 +20,6 @@ class ThemeNotifier with ChangeNotifier {
   // we tell the _themwService with late keyword that we initial value it later 
   late ThemeService _themeService;
 
-  // get _darkModePrefs from shared_preferences
-  bool _darkModePrefs = false;
-  bool getDarkModePres() => _darkModePrefs;
-
   // initial default value for field _themeData
   ThemeData _themeData = ThemeData.light();
   ThemeData getTheme() => _themeData;
@@ -34,8 +30,7 @@ class ThemeNotifier with ChangeNotifier {
       _themeService = ThemeService(prefs);
 
       final getDarkModePrefs = _themeService.getPrefs();
-      _darkModePrefs = getDarkModePrefs;
-
+      
       if (getDarkModePrefs) {
         _themeData = darkTheme;
       } else {
